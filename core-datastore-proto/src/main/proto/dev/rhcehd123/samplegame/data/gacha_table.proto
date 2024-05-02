@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_package = "dev.rhcehd123.samplegame.core.datastore.data";
+option java_multiple_files = true;
+
+message GachaTable {
+  string name = 1;
+  repeated Group gacha_group = 2;
+  //repeated Item gacha_item = 3;
+}
+
+message Group {
+  string name = 1;
+  string group_rate = 2;
+  repeated Item gacha_item = 3;
+}
+
+message Item {
+  string name = 1;
+  string group_name = 2;
+  string item_rate = 3;
+}

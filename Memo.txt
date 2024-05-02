@@ -1,0 +1,39 @@
+-- core-datastore , core-datastore-proto
+
+원래 core-datastore 모듈 하나에 datastore, protobuf 모두 사용 하려고 했으나
+1차적으로 hilt의 ksp 프로세싱에서 generated class에 대해 NonExistentClass 에러를 일으킴
+다른 해결 사례를 참고해 gradle에 generated source를 build scr에 포함시키는 구문을 추가했으나
+proto generate Task와 hilt ksp Task의 충돌이 일어남
+두 Task에 대해 의존 관계를 설정해 줘야 하는데 plugin Task에 대한 접근 방법을 찾지 못해 두 모듈을 분리 하기로 결정
+
+// hilt ksp NonExistentClass Error
+
+> Task :core-datastore:kspDebugKotlin FAILED
+e: [ksp] InjectProcessingStep was unable to process 'GachaDataSource(androidx.datastore.core.DataStore<error.NonExistentClass>)' because 'error.NonExistentClass' could not be resolved.
+
+Dependency trace:
+    => element (CLASS): dev.rhcehd123.core.datastore.GachaDataSource
+    => element (CONSTRUCTOR): GachaDataSource(androidx.datastore.core.DataStore<error.NonExistentClass>)
+    => type (EXECUTABLE constructor): (androidx.datastore.core.DataStore<error.NonExistentClass>)void
+    => type (DECLARED parameter type): androidx.datastore.core.DataStore<error.NonExistentClass>
+    => type (ERROR type argument): error.NonExistentClass
+
+If type 'error.NonExistentClass' is a generated type, check above for compilation errors that may have prevented the type from being generated. Otherwise, ensure that type 'error.NonExistentClass' is on your classpath.
+e: [ksp] ModuleProcessingStep was unable to process 'dev.rhcehd123.core.datastore.di.DataStoreModule' because 'error.NonExistentClass' could not be resolved.
+//
+
+// generate proto - hilt ksp conflict
+
+Some problems were found with the configuration of task ':core-datastore:kspDebugKotlin' (type 'KspTaskJvm').
+  - Gradle detected a problem with the following location: 'C:\Users\lhs94\Desktop\projects\android\SampleGame\core-datastore\build\generated\source\proto\debug\java\dev\rhcehd123\samplegame\core\datastore\data\Gacha.java'.
+
+    Reason: Task ':core-datastore:kspDebugKotlin' uses this output of task ':core-datastore:generateDebugProto' without declaring an explicit or implicit dependency. This can lead to incorrect results being produced, depending on what order the tasks are executed.
+
+    Possible solutions:
+      1. Declare task ':core-datastore:generateDebugProto' as an input of ':core-datastore:kspDebugKotlin'.
+      2. Declare an explicit dependency on ':core-datastore:generateDebugProto' from ':core-datastore:kspDebugKotlin' using Task#dependsOn.
+      3. Declare an explicit dependency on ':core-datastore:generateDebugProto' from ':core-datastore:kspDebugKotlin' using Task#mustRunAfter.
+
+    For more information, please refer to https://docs.gradle.org/8.2/userguide/validation_problems.html#implicit_dependency in the Gradle documentation.
+  - Gradle detected a problem with the following location: 'C:\Users\lhs94\Desktop\projects\android\SampleGame\core-datastore\build\generated\source\proto\debug\java\dev\rhcehd123\samplegame\core\datastore\data\GachaData.java'.
+//
