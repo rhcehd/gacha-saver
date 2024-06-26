@@ -5,11 +5,9 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.rhcehd123.samplegame.core.data.repository.GachaDataRepository
-import dev.rhcehd123.samplegame.core.data.repository.GachaDataRepositoryImpl
+import dev.rhcehd123.samplegame.core.data.repository.impl.GachaDataRepositoryImpl
 import dev.rhcehd123.samplegame.core.data.repository.GachaSaverRepository
-import dev.rhcehd123.samplegame.core.data.repository.GachaSaverRepositoryImpl
-import dev.rhcehd123.samplegame.core.data.repository.SettingsRepository
-import dev.rhcehd123.samplegame.core.data.repository.SettingsRepositoryImpl
+import dev.rhcehd123.samplegame.core.data.repository.impl.GachaSaverRepositoryImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -23,9 +21,4 @@ internal abstract class DataModule {
     abstract fun bindsGachaSaverRepository(
         gachaSaverRepository: GachaSaverRepositoryImpl
     ): GachaSaverRepository
-
-    @Binds
-    abstract fun bindsSettingsRepository(
-        settingsRepository: SettingsRepositoryImpl
-    ): SettingsRepository
 }

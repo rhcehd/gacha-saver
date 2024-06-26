@@ -1,6 +1,7 @@
-package dev.rhcehd123.samplegame.core.data.repository
+package dev.rhcehd123.samplegame.core.data.repository.impl
 
-import dev.rhcehd123.core.datastore.GachaDataSource
+import dev.rhcehd123.samplegame.core.data.repository.GachaDataRepository
+import dev.rhcehd123.samplegame.core.datastore.GachaDataSource
 import dev.rhcehd123.samplegame.core.model.GachaData
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

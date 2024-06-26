@@ -1,5 +1,6 @@
-package dev.rhcehd123.samplegame.core.data.repository
+package dev.rhcehd123.samplegame.core.data.repository.impl
 
+import dev.rhcehd123.samplegame.core.data.repository.GachaSaverRepository
 import dev.rhcehd123.samplegame.core.model.GachaItem
 import dev.rhcehd123.samplegame.core.network.GachaSaverNetworkDataSource
 import javax.inject.Inject
