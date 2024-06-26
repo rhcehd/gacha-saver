@@ -12,8 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import dev.rhcehd123.designsystem.component.SampleGameDrawer
-import dev.rhcehd123.designsystem.component.SampleGameTopBar
+import dev.rhcehd123.samplegame.core.designsystem.component.SampleGameDrawer
+import dev.rhcehd123.samplegame.core.designsystem.component.SampleGameTopBar
 import dev.rhcehd123.samplegame.navigation.SampleGameDrawerContent
 import dev.rhcehd123.samplegame.navigation.SampleGameNavHost
 import kotlinx.coroutines.launch

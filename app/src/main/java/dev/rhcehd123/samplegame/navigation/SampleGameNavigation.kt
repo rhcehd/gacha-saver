@@ -13,8 +13,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import dev.rhcehd123.feature.gacha.GachaScreen
-import dev.rhcehd123.feature.setting.SettingsScreen
+import dev.rhcehd123.samplegame.feature.gacha.GachaScreen
+import dev.rhcehd123.samplegame.feature.setting.SettingsScreen
 import dev.rhcehd123.samplegame.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

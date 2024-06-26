@@ -10,7 +10,7 @@ import com.google.android.gms.games.AuthenticationResult
 import com.google.android.gms.games.PlayGames
 import com.google.android.gms.tasks.Task
 import dagger.hilt.android.AndroidEntryPoint
-import dev.rhcehd123.designsystem.theme.SampleGameTheme
+import dev.rhcehd123.samplegame.core.designsystem.theme.SampleGameTheme
 import dev.rhcehd123.samplegame.ui.SampleGameMain
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
